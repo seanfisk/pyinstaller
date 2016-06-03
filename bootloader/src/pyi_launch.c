@@ -404,7 +404,7 @@ pyi_launch_run_scripts(ARCHIVE_STATUS *status)
             /* If retval is NULL, an error occured. Otherwise, it is a Python object.
              * (Since we evaluate module-level code, which is not allowed to return an
              * object, the Python object returned is always None.) */
-            if (!retval) {
+            if (retval == NULL) {
                 PI_PyErr_Print();
                 /* If the error was SystemExit, PyErr_Print calls exit() without
                  * returning. So don't print "Failed to execute" on SystemExit. */
